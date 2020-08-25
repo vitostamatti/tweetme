@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="jumbotron text-center">
+
+<div id="tweetme"></div>
+
+<div class="jumbotron text-center d-none">
     <div class="col">
         <h2>Welcome to tweetme</h1>
     </div>
 </div>
 
-<div class="row mb-2">
+<div class="row mb-2 d-none">
     <div class="col-md-4 mx-auto col-10">
         <div class="d-none alert alert-danger" id="tweet-create-form-error"></div>
         <form class="form" id='tweet-create-form' method="POST" action="/create-tweet/">
@@ -19,7 +22,9 @@
     </div>
 </div>
 
-<div class="row" id="tweets">
+
+
+<div class="row d-none" id="tweets">
     Loading...
 </div>
 

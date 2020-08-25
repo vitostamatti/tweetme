@@ -16,11 +16,11 @@ from .serializers import (TweetSerializer, TweetActionSerializer, TweetCreateSer
 def home_view(request, *args, **kwargs):
     return render(request, 'pages/home.html', context={}, status=200)
 
+#@authentication_classes([SessionAuthentication])
 @api_view(['POST'])
-@authentication_classes([SessionAuthentication])
 @permission_classes([IsAuthenticated]) #REST API course
 def tweet_create_view(request, *args, **kwargs):
-    serializer = TweetCreateSerializer(data=request.POST)
+    serializer = TweetCreateSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(user=request.user)
         return Response(serializer.data, status=201)    
