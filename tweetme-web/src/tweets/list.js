@@ -7,11 +7,12 @@ export function TweetsList(props) {
     const [tweets, setTweets] = useState([])
     const [tweetsDidSet, setTweetsDidSet] = useState(false)
     useEffect(() => {
-        const finalTweetList = [...props.newTweet].concat(tweetsInit)
+        //const finalTweetList = [...props.newTweet].concat(tweetsInit)
+        const finalTweetList = [...props.newTweets].concat(tweetsInit)
         if (finalTweetList.length !== tweets.length) {
             setTweets(finalTweetList)
         }
-    }, [props.newTweet, tweets, tweetsInit])
+    }, [props.newTweets, tweets, tweetsInit])
 
     useEffect(() => {
         if (tweetsDidSet === false) {

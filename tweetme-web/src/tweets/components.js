@@ -5,18 +5,19 @@ import { Tweet } from './detail'
 import { apiTweetDetail } from './lookup'
 
 export function TweetsComponent(props) {
-    const [newTweet, setNewTweet] = useState([])
+    const [newTweets, setNewTweets] = useState([])
     const canTweet = props.canTweet === 'false' ? false : true // converting string to boolean
 
     const handlNewTweet = (newTweet) => {
-        let tempNewTweet = [...newTweet]
+        //let tempNewTweet = [...newTweet]
+        let tempNewTweet = [...newTweets]
         tempNewTweet.unshift(newTweet)
-        setNewTweet(tempNewTweet)
+        setNewTweets(tempNewTweet)
     }
     return (
         <div className={props.className}>
             {canTweet === true && <TweetCreate didTweet={handlNewTweet} className='col-10 mb-3 mx-auto'></TweetCreate>}
-            <TweetsList {...props} newTweet={newTweet} />
+            <TweetsList {...props} newTweets={newTweets} />
         </div>
     )
 }
