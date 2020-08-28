@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { apiTweetList } from './lookup'
+import { apiTweetFeed } from './lookup'
 import { Tweet } from './detail'
 
-export function TweetsList(props) {
+export function TweetsFeedList(props) {
     const [tweetsInit, setTweetsInit] = useState([])
     const [tweets, setTweets] = useState([])
     const [nextUrl, setNextUrl] = useState(null)
@@ -28,7 +28,7 @@ export function TweetsList(props) {
                     console.log("There was an error")
                 }
             }
-            apiTweetList(props.username, handleTweetListLookup)
+            apiTweetFeed(handleTweetListLookup)
         }
 
     }, [tweetsInit, setTweetsDidSet, tweetsDidSet, props.username])
@@ -55,7 +55,7 @@ export function TweetsList(props) {
                     console.log("There was an error")
                 }
             }
-            apiTweetList(props.username, handleLoadNextResponse, nextUrl)
+            apiTweetFeed(handleLoadNextResponse, nextUrl)
         }
     }
     return <React.Fragment>{

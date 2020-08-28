@@ -27,14 +27,16 @@ export function backendLookup(method, endpoint, callback, data) {
     if (method === 'POST') {
         const csrftoken = getCookie('csrftoken');
         //xhr.setRequestHeader("HTTP_X_REQUESTED_WITH", "XMLHttpRequest")
-        xhr.setRequestHeader("HTTP_X_USERNAME", 'vitostamatti')
+        //xhr.setRequestHeader("HTTP_X_USERNAME", 'vitostamatti')
         xhr.setRequestHeader("X-CSRFToken", csrftoken)
     }
     xhr.onload = function () {
         if (xhr.status === 401) {
             const detail = xhr.response.detail
             if (detail === "Authentication credentials were not provided.") {
-                window.location.href = '/login?showLoginRequired=true'
+                if (window.location.href.indexOf('login') === -1) {
+                    window.location.href = '/login?showLoginRequired=true'
+                }
             }
         }
         callback(xhr.response, xhr.status)

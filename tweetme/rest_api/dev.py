@@ -6,6 +6,6 @@ User = get_user_model()
 
 class DevAuthentication(authentication.BaseAuthentication):
     def authenticate(self, request):
-        qs = User.objects.all()
+        qs = User.objects.filter(username="user2")
         user = qs.first()
         return (user , None)
