@@ -15,7 +15,7 @@ from .serializers import (TweetSerializer, TweetActionSerializer, TweetCreateSer
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
-    return render(request, 'pages/home.html', context={}, status=200)
+    return render(request, 'pages/feed.html')
 
 def tweets_list_view(request, *args, **kwargs):
     return render(request, 'tweets/list.html')

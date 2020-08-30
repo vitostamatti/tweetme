@@ -4,6 +4,6 @@ from .views import (profile_detail_view, profile_update_view)
 
 urlpatterns = [
     path('<str:username>/update', profile_update_view),
-    path('<str:username>/', profile_detail_view),
+    path('<str:username>/', profile_detail_view, name="profile"),
     
 ]

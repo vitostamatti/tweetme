@@ -23,18 +23,20 @@ from accounts.views import (login_view, logout_view, register_view)
 
 from tweets.views import (
     tweets_list_view,
-    tweets_detail_view)
+    tweets_detail_view,
+    home_view,)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', tweets_list_view),
+    path("", home_view),
+    path('global/', tweets_list_view),
     path('login/', login_view),
     path('logout/', logout_view),
     path('register/', register_view),
     path('api/tweets/', include('tweets.api.urls')),
     path('<int:tweet_id>/', tweets_detail_view),
-    re_path(r'profiles?/', include('profiles.urls')),
-    re_path(r'api/profiles?/', include('profiles.api.urls')),
+    path('profiles/', include('profiles.urls')),
+    path('api/profiles/', include('profiles.api.urls')),
 ]
 
 if settings.DEBUG:
